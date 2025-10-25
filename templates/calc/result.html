@@ -1,18 +1,94 @@
 <!doctype html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <title>arbol5 - Resultado</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 400px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: #ffeb3b;
+    }
+
+    p {
+      margin: 0.8rem 0;
+      font-size: 1rem;
+    }
+
+    .result-box {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #000;
+      margin: 0.5rem 0;
+    }
+
+    code {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.2rem 0.4rem;
+      border-radius: 5px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      color: #ffeb3b;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      color: #fff;
+      text-shadow: 0 0 5px #ffeb3b;
+    }
+
+    .error {
+      background: rgba(255, 0, 0, 0.3);
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>Resultado</h1>
-  {% if error %}
-    <p style="color:red">{{ error }}</p>
-  {% else %}
-    <p>Valores: X={{ X }}, Y={{ Y }}</p>
-    <p>Expresión 1: <code>{{ expr1 }}</code> → <strong>{{ results.0 }}</strong></p>
-    <p>Expresión 2: <code>{{ expr2 }}</code> → <strong>{{ results.1 }}</strong></p>
-  {% endif %}
-  <a href="{% url 'input' %}">Volver</a>
+  <div class="container">
+    <h1>Resultado</h1>
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% else %}
+      <p>Valores: X={{ X }}, Y={{ Y }}</p>
+      <p>Expresión 1: <code>{{ expr1 }}</code></p>
+      <div class="result-box">{{ results.0 }}</div>
+      <p>Expresión 2: <code>{{ expr2 }}</code></p>
+      <div class="result-box">{{ results.1 }}</div>
+    {% endif %}
+    <a href="{% url 'input' %}">Volver</a>
+  </div>
 </body>
 </html>

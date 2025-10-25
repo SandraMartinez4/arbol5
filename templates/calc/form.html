@@ -1,23 +1,107 @@
 <!doctype html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <title>arbol5 - Calculadora de expresiones</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 350px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: #ffeb3b;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: #fff;
+      text-align: left;
+    }
+
+    input[type="number"], input[type="text"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      margin-top: 0.3rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #ffeb3b;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #fff;
+      transform: scale(1.05);
+    }
+
+    p {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    code {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.2rem 0.4rem;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-  <h1>arbol5 — Ingresa X, Y y expresiones</h1>
-  <form action="{% url 'result' %}" method="post">
-    {% csrf_token %}
-    <label>X: <input type="number" step="any" name="X" required></label><br>
-    <label>Y: <input type="number" step="any" name="Y" required></label><br>
-    <label>Expresión 1 (usa X y Y) — por defecto: X**2<br>
-      <input type="text" name="expr1" placeholder="X**2">
-    </label><br>
-    <label>Expresión 2 (usa X y Y) — por defecto: 2*Y<br>
-      <input type="text" name="expr2" placeholder="2*Y">
-    </label><br>
-    <button type="submit">Calcular</button>
-  </form>
-  <p>Ejemplos de expresiones válidas: <code>X**2</code>, <code>2*Y</code>, <code>X*Y+3</code>, <code>-(X)+Y</code></p>
+  <div class="container">
+    <h1>Calculadora de Expresiones</h1>
+    <form action="{% url 'result' %}" method="post">
+      {% csrf_token %}
+      <label>
+        X:
+        <input type="number" step="any" name="X" required>
+      </label>
+      <label>
+        Y:
+        <input type="number" step="any" name="Y" required>
+      </label>
+      <label>
+        Expresión 1:
+        <input type="text" name="expr1" placeholder="Ej: X**2">
+      </label>
+      <label>
+        Expresión 2:
+        <input type="text" name="expr2" placeholder="Ej: 2*Y">
+      </label>
+      <button type="submit">Calcular</button>
+    </form>
+    <p>Ejemplo: <code>X*Y + 3</code> o <code>(X+Y)**2</code></p>
+  </div>
 </body>
 </html>
