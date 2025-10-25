@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>arbol5 - Calculadora de expresiones</title>
+</head>
+<body>
+  <h1>arbol5 — Ingresa X, Y y expresiones</h1>
+  <form action="{% url 'result' %}" method="post">
+    {% csrf_token %}
+    <label>X: <input type="number" step="any" name="X" required></label><br>
+    <label>Y: <input type="number" step="any" name="Y" required></label><br>
+    <label>Expresión 1 (usa X y Y) — por defecto: X**2<br>
+      <input type="text" name="expr1" placeholder="X**2">
+    </label><br>
+    <label>Expresión 2 (usa X y Y) — por defecto: 2*Y<br>
+      <input type="text" name="expr2" placeholder="2*Y">
+    </label><br>
+    <button type="submit">Calcular</button>
+  </form>
+  <p>Ejemplos de expresiones válidas: <code>X**2</code>, <code>2*Y</code>, <code>X*Y+3</code>, <code>-(X)+Y</code></p>
+</body>
+</html>

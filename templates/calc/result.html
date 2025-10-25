@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>arbol5 - Resultado</title>
+</head>
+<body>
+  <h1>Resultado</h1>
+  {% if error %}
+    <p style="color:red">{{ error }}</p>
+  {% else %}
+    <p>Valores: X={{ X }}, Y={{ Y }}</p>
+    <p>Expresión 1: <code>{{ expr1 }}</code> → <strong>{{ results.0 }}</strong></p>
+    <p>Expresión 2: <code>{{ expr2 }}</code> → <strong>{{ results.1 }}</strong></p>
+  {% endif %}
+  <a href="{% url 'input' %}">Volver</a>
+</body>
+</html>

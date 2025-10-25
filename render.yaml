@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: arbol5
+    env: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn arbol5.wsgi:application"
